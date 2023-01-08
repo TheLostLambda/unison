@@ -1,0 +1,17 @@
+helloWorld : '{IO, Exception} ()
+helloWorld = do
+  use Text ++
+  name = !console.getLine
+  printLine ("Hello " ++ name)
+
+double : Nat -> Nat
+double x =
+  use Nat *
+  x * 2
+-- > double 4
+
+greet : Text -> Text
+greet name =
+  use Text ++
+  "Hi " ++ name
+-- > greet "Brooks"

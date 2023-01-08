@@ -1,0 +1,32 @@
+use base
+
+mySquare : Nat -> Nat
+mySquare x =
+  sum (map (x -> x * 2 + 1) (range 0 x))
+  
+> mySquare 4
+
+sum : [Nat] -> Nat
+sum = foldLeft (+) 0
+
+---- Anything below this line is ignored by Unison.
+
+use base
+
+square : Nat -> Nat
+square x = x * x
+
+> square 4
+test> square.tests.ex1 = check (square 4 == 16)
+test> square.tests.prop1 =
+  go _ = a = !gen.nat
+         b = !gen.nat
+         expect (square a * square b == square (a * b))
+  runs 100 go
+
+-- A comment, ignored by Unison
+
+> List.reverse [1,2,3,4]
+> 4 + 6
+> 5.0 / 2.0
+> not true
